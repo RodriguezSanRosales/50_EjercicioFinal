@@ -7,7 +7,7 @@ $(document).ready(function() {
 
 	//La variable "recipesArray" esta declarada en el archivo "data/recipes.js"
 	renderHighlightedRecipes(recipesArray);
-	renderRecipe(recipe);
+	//renderRecipe(recipe);
 
 });
 
@@ -26,6 +26,8 @@ function renderHighlightedRecipes(recipesArray) {
 	for(var i=0; i < recipesArray.length; i++) {
 		if(recipesArray[i].highlighted == true){
 			renderRecipe(recipesArray[i]); 
+			
+
 		}
 	}
 
@@ -48,26 +50,29 @@ function renderRecipe(recipe) {
 
 	var spanTittle = $('<span></span>');
 	spanTittle.addClass('title-recipe');
-	spanTittle.attr('tittle');
+	spanTittle.attr('title', recipe.title);
+	spanTittle.text(recipe.title);
 
 	var spanMeta = $('<span></span>');
 	spanMeta.addClass('metadata-recipe');
 
 	var spanAuthor = $('<span></span>');
 	spanAuthor.addClass('author-recipe');
-	spanAuthor.text(name);
+	spanAuthor.text(recipe.name);
 
 	var spanBook = $('<span></span>');
 	spanBook.addClass('bookmarks-recipe');
 
 	var spanIcon = $('<span></span>');
 	spanIcon.addClass('icon-bookmark');
+	spanIcon.text(recipe.cookTime);
+
 
 	var img = $('<img/>');
-	img.attr('src', 'https://s-media-cache-ak0.pinimg.com/originals/27/3a/02/273a023d4c06cb95eca6eb667ce3c68e.jpg');
-
-	//metemos span dentro de a
+	img.attr('src', recipe.source.url);
+	//metemos span e imgdentro de a
 	a.append(span);
+	a.append(img);
 
 	//metemos spans dentro de span
 	span.append(spanTittle);
