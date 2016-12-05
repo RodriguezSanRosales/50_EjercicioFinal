@@ -1,4 +1,4 @@
-$(document).ready( function(){
+$(document).on("ready", function(){
 
 	$('.js-back').hide();
 
@@ -20,6 +20,12 @@ function printNews(){
 */
 function renderHighlightedRecipes(recipesArray) {
 	console.log('Recipes: ', recipesArray);
+
+	for(i=0; i<=recipesArray.length; i++){
+		if(recipesArray[i].highlighted == true){
+			renderRecipe(recipesArray[i]); 
+		}
+	}
 }
 
 /*
