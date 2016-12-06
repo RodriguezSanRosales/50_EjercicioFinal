@@ -22,3 +22,8 @@ $('.js-show-make').click(function() {
 	$('.js-show-recipe').removeClass('active');	
 	
 });
+
+$('.js-back').click(function() {
+	
+	window.location = 'index.html';
+});
