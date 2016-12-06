@@ -8,10 +8,11 @@ $(document).ready(function() {
 	//La variable "recipesArray" esta declarada en el archivo "data/recipes.js"
 	renderHighlightedRecipes(recipesArray);
 	//renderRecipe(recipe);
-
+	renderActivities(activities);
 });
 
 function printNews(){
+
 	$('.callout-news p').append("NUEVAS RECETAS")
 }
 	
@@ -26,8 +27,6 @@ function renderHighlightedRecipes(recipesArray) {
 	for(var i=0; i < recipesArray.length; i++) {
 		if(recipesArray[i].highlighted == true){
 			renderRecipe(recipesArray[i]); 
-			
-
 		}
 	}
 
@@ -98,7 +97,17 @@ function renderRecipe(recipe) {
 */
 function renderActivities(activitiesArray) {
 	console.log('Activities: ', activitiesArray);
+
+	if (activitiesArray.length > 0) {
+		$(".wrapper-message").hide("slow");
+	}
+
+	for (var i = 0; i < activitiesArray.length; i++) {
+		renderActivity(activitiesArray[i]);
+	}
+		
 }
+
 
 /*
 * Función que se encarga de pintar una actividad
@@ -106,6 +115,28 @@ function renderActivities(activitiesArray) {
 * archivo "templates/templates-activity.html"
 */
 function renderActivity(recipe) {
+
+	var template =
+	'<a href="#" class="item-activity"' +
+		'<span class="attribution">' +
+			'<span class="avatar">' +
+				'<img class="image-avatar" src="<%= userAvatar %>">' +
+			'</span>' +
+			'<span class="meta">' +
+				'<span class="author"><%= userName %></span>' +
+				'<span class="recipe"><%= recipeName %></span>' +
+				'<span class="location">&mdash;<%= place %></span>' +
+			'</span>' +	
+		'</span>' +
+		'<div class="bg-image" style="background-image: url(&quot;<%= image %>&quot;)"></div>' +
+	'</a>';
+
+	var compiled = _.template( template );
+	var a = compiled(recipe);
+	console.log(a);
+
+	var elemento = $(a);
+	$('.list-activities').append(elemento);
 	
 }
 
