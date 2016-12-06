@@ -4,3 +4,14 @@ $(document).ready( function(){
 	$('.js-menu').hide();
 
 });
+
+$('.js-show-recipe').click(function() {
+
+	$('body div').removeClass('make');	
+	
+});
+
+$('.js-show-make').click(function() {
+	$('body div').addClass('make');
+	
+});
